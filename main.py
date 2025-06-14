@@ -28,7 +28,7 @@ conn = sqlite3.connect(DB_PATH, check_same_thread=False)
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS mediciones (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id TEXT,
+    user_id INTEGER,
     ECG REAL,
     HRV REAL,
     MOVIMIENTO REAL,
@@ -52,7 +52,7 @@ conn.commit()
 # 3. Esquemas de entrada/salida
 # ---------------------------
 class Medidas(BaseModel):
-    user_id: str
+    user_id: int
     ECG: float
     HRV: float
     MOVIMIENTO: float
